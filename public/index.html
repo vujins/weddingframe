@@ -16,14 +16,25 @@
     <script defer src="/__/firebase/init.js?useEmulator=false"></script>
   </head>
   <body>
-    <h1>Jelena i Igor</h1>
-    <p>Podeli slike sa nama sa svadbe.</p>
-    <p id="loading" style="display: none;">Slike se ucitavaju...</p>
-    <form onsubmit="writeToStorage(event)">
-      <input type="file" name="imageUpload" multiple accept="image/*,video/*" />
+    <div>
+      <h1>Jelena i Igor</h1>
+      <p>Podeli slike sa nama sa svadbe.</p>
+      <p id="loading" style="display: none">Slike se ucitavaju...</p>
+      <form onsubmit="writeToStorage(event)">
+        <label for="imageUpload" class="form-button">Odaberite slike</label>
+        <input
+          type="file"
+          id="imageUpload"
+          name="imageUpload"
+          multiple
+          accept="image/*,video/*"
+        />
 
-      <button type="submit">Upload</button>
-    </form>
+        <hr class="horizontal-line" />
+
+        <button type="submit" class="form-button">Upload</button>
+      </form>
+    </div>
 
     <script>
       function setEnabledState(form, enabled) {
@@ -55,7 +66,9 @@
 
           const results = await Promise.all(promises);
 
-          const successfulResults = results.filter(r => r.state === "success").length;
+          const successfulResults = results.filter(
+            (r) => r.state === "success"
+          ).length;
 
           alert(`Successfully uploaded ${successfulResults} images!`);
         } catch (error) {

@@ -1,0 +1,62 @@
+:root {
+  /* CSS HEX */
+  --black: #000100ff;
+  --cadet-gray: #a1a6b4ff;
+  --light-blue: #94c5ccff;
+  --columbia-blue: #b4d2e7ff;
+  --seasalt: #f8f8f8ff;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background-color: var(--seasalt);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: var(--black);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#imageUpload::file-selector-button {
+  display: none;
+}
+
+.form-button {
+  display: block;
+  position: relative;
+  padding: 1.5em 3em;
+
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+  border: var(--black) 1px solid;
+
+  &:hover {
+    background: rgba(100, 0, 0, 0.03);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.horizontal-line {
+  width: 100%;
+  border: var(--black) 0.5px solid;
+}
