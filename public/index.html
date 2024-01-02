@@ -16,6 +16,9 @@
     <script defer src="/__/firebase/init.js?useEmulator=false"></script>
   </head>
   <body>
+    <h1>Jelena i Igor</h1>
+    <p>Podeli slike sa nama sa svadbe.</p>
+    <p id="loading" style="display: none;">Slike se ucitavaju...</p>
     <form onsubmit="writeToStorage(event)">
       <input type="file" name="imageUpload" multiple accept="image/*,video/*" />
 
@@ -23,12 +26,24 @@
     </form>
 
     <script>
+      function setEnabledState(form, enabled) {
+        for (const element of form.elements) {
+          element.disabled = !enabled;
+        }
+      }
+
       async function writeToStorage(e) {
         e.preventDefault();
+        const form = e.target;
+        const loadingElement = document.getElementById("loading");
+        loadingElement.style.display = "block";
 
         try {
           const formData = new FormData(e.target);
           const filesToUpload = formData.getAll("imageUpload");
+
+          // disable after we get all images
+          setEnabledState(form, false);
 
           const promises = [];
 
@@ -38,12 +53,18 @@
             promises.push(fileRef.put(file));
           }
 
-          await Promise.all(promises);
+          const results = await Promise.all(promises);
 
-          alert(`Successfully uploaded ${promises.length} images!`);
+          const successfulResults = results.filter(r => r.state === "success").length;
+
+          alert(`Successfully uploaded ${successfulResults} images!`);
         } catch (error) {
           console.error(error);
           alert("Failed to upload images!");
+        } finally {
+          setEnabledState(form, true);
+          form.reset();
+          loadingElement.style.display = "none";
         }
       }
     </script>
