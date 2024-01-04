@@ -6,6 +6,7 @@
     <title>Wedding Frame</title>
 
     <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>
 
     <script defer src="/__/firebase/10.7.1/firebase-app-compat.js"></script>
     <script defer src="/__/firebase/10.7.1/firebase-storage-compat.js"></script>
@@ -17,69 +18,20 @@
   </head>
   <body>
     <div>
-      <h1>Jelena i Igor</h1>
-      <p>Podeli slike sa nama sa svadbe.</p>
+      <h1>Jelena 👰 i Igor 🤵</h1>
+      <p>Podeli slike sa nama sa svadbe 📸.</p>
+
+      <input
+        type="file"
+        multiple
+        accept="image/*"
+        onchange="onFileInputChange(event)"
+        id="file-input"
+        class="hidden disabled-label"
+      />
+      <label class="form-button" for="file-input">Odaberite slike</label>
+
       <p id="loading" style="display: none">Slike se ucitavaju...</p>
-      <form onsubmit="writeToStorage(event)">
-        <label for="imageUpload" class="form-button">Odaberite slike</label>
-        <input
-          type="file"
-          id="imageUpload"
-          name="imageUpload"
-          multiple
-          accept="image/*,video/*"
-        />
-
-        <hr class="horizontal-line" />
-
-        <button type="submit" class="form-button">Upload</button>
-      </form>
     </div>
-
-    <script>
-      function setEnabledState(form, enabled) {
-        for (const element of form.elements) {
-          element.disabled = !enabled;
-        }
-      }
-
-      async function writeToStorage(e) {
-        e.preventDefault();
-        const form = e.target;
-        const loadingElement = document.getElementById("loading");
-        loadingElement.style.display = "block";
-
-        try {
-          const formData = new FormData(e.target);
-          const filesToUpload = formData.getAll("imageUpload");
-
-          // disable after we get all images
-          setEnabledState(form, false);
-
-          const promises = [];
-
-          for (const file of filesToUpload) {
-            const storageRef = firebase.storage().ref();
-            const fileRef = storageRef.child("Jelena2024/" + file.name);
-            promises.push(fileRef.put(file));
-          }
-
-          const results = await Promise.all(promises);
-
-          const successfulResults = results.filter(
-            (r) => r.state === "success"
-          ).length;
-
-          alert(`Successfully uploaded ${successfulResults} images!`);
-        } catch (error) {
-          console.error(error);
-          alert("Failed to upload images!");
-        } finally {
-          setEnabledState(form, true);
-          form.reset();
-          loadingElement.style.display = "none";
-        }
-      }
-    </script>
   </body>
 </html>

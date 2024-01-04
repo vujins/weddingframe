@@ -1,10 +1,13 @@
 :root {
+  --color-dark: #60695cff;
+  --background-light: #d6f9ddff;
+
   /* CSS HEX */
-  --black: #000100ff;
-  --cadet-gray: #a1a6b4ff;
-  --light-blue: #94c5ccff;
-  --columbia-blue: #b4d2e7ff;
-  --seasalt: #f8f8f8ff;
+  --nyanza: #d6f9ddff;
+  --light-green: #99f7abff;
+  --pistachio: #abdf75ff;
+  --ebony: #60695cff;
+  --columbia-blue: #c5d6d8ff;
 }
 
 body {
@@ -13,19 +16,13 @@ body {
   align-items: center;
   height: 100vh;
 
-  background-color: var(--seasalt);
+  background-color: var(--background-light);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  color: var(--black);
+  color: var(--color-dark);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#imageUpload::file-selector-button {
+.hidden {
   display: none;
 }
 
@@ -37,26 +34,30 @@ form {
   appearance: none;
   border: 0;
   background: transparent;
-  color: var(--black);
+  color: var(--color-dark);
   text-transform: uppercase;
   letter-spacing: 0.25em;
   cursor: pointer;
   font-weight: bold;
   border-radius: 0;
-  box-shadow: inset 0 0 0 var(--border-size) currentcolor;
-  border: var(--black) 1px solid;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: var(--color-dark) 1px solid;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 
   &:hover {
     background: rgba(100, 0, 0, 0.03);
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  &:active {
+    background: rgba(100, 0, 0, 0.099);
   }
 }
 
-.horizontal-line {
-  width: 100%;
-  border: var(--black) 0.5px solid;
+.disabled-label:disabled+label {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: rgba(100, 0, 0, 0.150);
 }
