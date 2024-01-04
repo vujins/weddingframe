@@ -32,9 +32,9 @@ function setLoading(isLoading) {
         (r) => r.state === "success"
       ).length;
 
-      alert(`Successfully uploaded ${successfulResults} images!`);
+      alert(`Uspesno ste podelili slike sa svadbe! 🎉🎉🎉 Broj podeljenih slika ${successfulResults} 🖼️`);
     } catch (error) {
-      alert("Failed to upload images!");
+      alert("Niste uspeli da podelite slike 😭");
     } finally {
       fileInput.disabled = false;
       setLoading(false);
