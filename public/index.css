@@ -23,6 +23,7 @@ p {
 
 .container {
   height: 75vh;
+  margin-top: 20px;
 
   display: flex;
   flex-direction: column;
