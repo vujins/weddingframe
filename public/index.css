@@ -67,21 +67,12 @@ p {
   }
 }
 
-.bottom-right {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-
-  background-color: var(--background-light);
+.font-size-18 {
+  font-size: 18px;
 }
 
-.small-size {
-  height: 45px;
-  width: 45px;
-}
-
-.rotate20 {
-  transform: rotate(20deg);
+.font-size-16 {
+  font-size: 16px;
 }
 
 .disabled-label:disabled + label {
