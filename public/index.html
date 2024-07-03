@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Wedding Frame</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lancelot&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
+
     <script src="index.js"></script>
 
     <script defer src="/__/firebase/10.7.1/firebase-app-compat.js"></script>
@@ -17,19 +24,29 @@
     <script defer src="/__/firebase/init.js?useEmulator=false"></script>
   </head>
   <body>
-    <div>
-      <h1>Jelena 👰 i Igor 🤵</h1>
-      <p>Podelite slike sa nama 📸.</p>
+    <div class="container">
+      <img src="./BeOurGuest.png" />
+      <h1>Edvin & Milica</h1>
+      <p>Podelite svoje slike i snimke sa nama!</p>
 
       <input
         type="file"
         multiple
-        accept="image/*"
+        accept="image/*,video/*"
         onchange="onFileInputChange(event)"
         id="file-input"
         class="hidden disabled-label"
       />
-      <label class="form-button" for="file-input">Odaberite slike</label>
+      <label class="form-button" for="file-input">
+        Odaberi
+        <img class="bottom-right small-size rotate20" src="./click.png" />
+      </label>
+
+      <p>
+        Klikom na dugme ispod možete upload-ovati slike i snimke sa svojih
+        telefona i podeliti ih sa nama. Nakon svadbe ćete i vi dobiti pristup
+        galeriji.
+      </p>
 
       <p id="loading" style="display: none">Slike se ucitavaju...</p>
     </div>

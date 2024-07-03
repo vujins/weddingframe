@@ -22,7 +22,7 @@ function setLoading(isLoading) {
 
       for (const file of filesToUpload) {
         const storageRef = firebase.storage().ref();
-        const fileRef = storageRef.child("Jelena2024/" + file.name);
+        const fileRef = storageRef.child("Milica2024/" + file.name);
         promises.push(fileRef.put(file));
       }
 

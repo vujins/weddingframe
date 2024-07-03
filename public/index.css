@@ -1,25 +1,33 @@
 :root {
-  --color-dark: #60695cff;
-  --background-light: #d6f9ddff;
-
-  /* CSS HEX */
-  --nyanza: #d6f9ddff;
-  --light-green: #99f7abff;
-  --pistachio: #abdf75ff;
-  --ebony: #60695cff;
-  --columbia-blue: #c5d6d8ff;
+  --color-dark: #84614c;
+  --background-light: #fff5f2;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--background-light);
+  font-family: "Lancelot", serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+h1 {
+  font-weight: 500;
+}
+
+p {
+  text-align: center;
+}
+
+.container {
   height: 75vh;
 
-  background-color: var(--background-light);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hidden {
@@ -29,19 +37,16 @@ body {
 .form-button {
   display: block;
   position: relative;
-  padding: 1.5em 3em;
+  padding: 0.5em 2em;
+  margin: 10px;
 
   appearance: none;
   border: 0;
   background: transparent;
   color: var(--color-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
   cursor: pointer;
-  font-weight: bold;
-  border-radius: 0;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border: var(--color-dark) 1px solid;
+  border-radius: 10px;
+  border: var(--color-dark) 2px solid;
 
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -56,8 +61,25 @@ body {
   }
 }
 
-.disabled-label:disabled+label {
+.bottom-right {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+
+  background-color: var(--background-light);
+}
+
+.small-size {
+  height: 45px;
+  width: 45px;
+}
+
+.rotate20 {
+  transform: rotate(20deg);
+}
+
+.disabled-label:disabled + label {
   opacity: 0.5;
   cursor: not-allowed;
-  background: rgba(100, 0, 0, 0.150);
+  background: rgba(100, 0, 0, 0.15);
 }
