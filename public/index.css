@@ -5,11 +5,12 @@
 
 body {
   background-color: var(--background-light);
+
   font-family: "Lancelot", serif;
-  font-size: 20px;
   font-weight: 400;
   font-style: normal;
-  font-weight: 500;
+
+  font-size: 20px;
   color: var(--color-dark);
 }
 
@@ -21,9 +22,12 @@ p {
   text-align: center;
 }
 
+.max-width {
+  max-width: 100%;
+}
+
 .container {
   height: 75vh;
-  margin-top: 20px;
 
   display: flex;
   flex-direction: column;
